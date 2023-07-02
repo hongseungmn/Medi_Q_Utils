@@ -9,7 +9,7 @@ import time
 driver = webdriver.Chrome()
 
 url = "https://www.foodsafetykorea.go.kr/portal/healthyfoodlife/searchHomeHF.do?menu_grp=MENU_NEW04&menu_no=2823"
-f = open('../crollingTest.txt', 'w')
+f = open('../../crollingTest.txt', 'w')
 
 driver.get(url)
 

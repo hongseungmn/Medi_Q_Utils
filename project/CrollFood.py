@@ -135,14 +135,3 @@ import pandas as pd
 df.to_csv("test.csv")
 # 엑셀로 저장하기
 df.to_excel("test.xlsx")
-
-
-# // 정규식 패턴을 사용하여 URL을 추출
-# const urlPattern = /url\("([^"]+)"\)/g;
-# const matches = cssValue.matchAll(urlPattern);
-
-# // 추출된 URL 출력
-# for (const match of matches) {
-#   const url = match[1];
-#   console.log(url);
-# }

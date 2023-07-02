@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
+</head>
+<script>
+  $(document).ready(function(){
+    $('.slider1').bxSlider({
+      slideWidth: 200,
+      minSlides: 2,
+      maxSlides: 3,
+      slideMargin: 10
+    });
+  });
+</script>
+<body>
+  
+  <div class="slider1" style="background-color: #ccc;">
+    <div class="slide"><img src="YellowM_Mus.jpg"></div>
+    <div class="slide"><img src="RedM_Arg.jpg"></div>
+    <div class="slide"><img src="RedM_Col.jpg"></div>
+    <div class="slide"><img src="RedM_Hia.jpg"></div>
+    <div class="slide"><img src="RedM_Pro.jpg"></div>
+    <div class="slide"><img src="http://placehold.it/350x150&text=FooBar6"></div>
+    <div class="slide"><img src="http://placehold.it/350x150&text=FooBar7"></div>
+    <div class="slide"><img src="http://placehold.it/350x150&text=FooBar8"></div>
+    <div class="slide"><img src="http://placehold.it/350x150&text=FooBar9"></div>
+  </div>
+</body>
+</html>
