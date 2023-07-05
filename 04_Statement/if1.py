@@ -54,10 +54,8 @@ if not isNumber:
 '''
 #방법1]하나의 조건식안에서 논리 연산으로 처리
 isMultiple = '0'<=chr(code) <='9' and (code-ord('0')) %2 ==0
-if isMultiple:
-    print('2의 배수입니다')
-if '0'<=chr(code) <='9' and (code-ord('0')) %2 !=0:
-    print('2의 배수가 아닙니다')
+if isMultiple: print('2의 배수입니다')
+if '0'<=chr(code) <='9' and (code-ord('0')) %2 !=0:print('2의 배수가 아닙니다')
 #방법2]if문 안의 if문으로 처리
 if '0'<=chr(code) <='9':
     isMultiple=(code-ord('0')) %2 ==0

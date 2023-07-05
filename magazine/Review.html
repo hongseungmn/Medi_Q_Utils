@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    .effect-custom-font {
+      font-family : Noto Sans KR, sans-serif;
+    }
+    .review-panel {
+      width:500px;
+      height:500px;
+      border-bottom: 3px solid #ccc;
+      border-top: 3px solid #ccc;
+    }
+    .v-line {
+      border-right : 2px solid #cfcfcf;
+    }
+    .bi-star-fill {
+      color: #d7cc33;
+    }
+  </style>
+</head>
+<body>
+  <div class="container effect-custom-font">
+
+    <ul class="list-unstyled mt-5">
+      <li>
+        <div class="review-panel p-3">
+          <div class="review-title d-flex">
+            <div class="review-name">김**</div>
+            <div class="post-date ml-auto" style="font-size: 15px;color: #a0a0a0;">2023-03-02</div>
+          </div>
+          <div class="review-title-sub d-flex mt-2" style="font-size: 12px;color: #7c7b7b;">
+            <div class="review-ages p-1">30대</div><span class="v-line"></span>
+            <div class="review-gender p-1">여성</div><span class="v-line"></span>
+            <div class="review-period p-1">3개월 ~ 6개월 섭취</div>
+          </div>
+          <div class="star-count d-flex">
+            <i class="bi bi-star-fill rating"></i>
+            <i class="bi bi-star-fill rating"></i>
+            <i class="bi bi-star-fill rating"></i>
+            <i class="bi bi-star rating"></i>
+            <i class="bi bi-star rating"></i>
+          </div>
+          <div class="review-content mt-4 row">
+            <div class="review-content-effect m-2" ><h6>효과</h6>
+              <span class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:10px;">변비 개선</span>
+              <span class="p-1" style="color:#25a6fe;background-color:#d1ecff;border-radius: 15px;font-size:10px;">방귀냄새 감소</span>
+            </div>
+            <div class="review-content-effect m-2"><h6>부작용</h6>
+              <span class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:10px;">속쓰림</span>
+              <span class="p-1" style="color:#ff4b4b;background-color:#ffdcdc;border-radius: 15px;font-size:10px;">복통</span>
+              <span class="p-1" style="color:#9e9e9e;background-color:#dbdbdb;border-radius: 15px;font-size:10px;">효과가 없었어요</span>
+            </div>
+            <p class="mt-5" style="font-size:15px;">
+              다양하게 먹어봤지만 락토핏 골드가 저에게 딱 맞는 유산균이었어요 변비도 많이 없어지고, 나름 쾌변합니다ㅎ
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

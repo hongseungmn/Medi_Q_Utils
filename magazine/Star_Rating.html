@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+  <style>
+    .bi-star-fill{
+        font-size: 30px;
+        line-height: 30px;
+        color: #fff236;;
+        
+    }
+    .bi-star {
+      font-size: 30px;
+      line-height: 30px;
+    }
+    .bi-star,.bi-star-fill:hover {
+      font-size: 35px;      
+    }
+    .progress {
+      width: 15px;
+      height: 150px;
+      background-color: rgb(233, 133, 52);
+    }
+    .progress-bar {
+      width: 15px;
+      height: 20%;
+      background-color: #f39aa6;
+    }
+
+  </style>
+</head>
+<script>
+  $(function() {
+    $('.rating').click(function(e) {
+      $('.rating').removeClass("bi-star-fill").addClass("bi-star");
+        for(var i=0;i<=$(this).index();i++) {
+          $('.rating').eq(i).removeClass("bi-star").addClass("bi-star-fill");
+        }
+    });
+    
+  });
+
+</script>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="star-board col-sm-6 m-auto">
+        <div class="star-rating mt-5">
+          <i class="bi bi-star rating"></i>
+          <i class="bi bi-star rating"></i>
+          <i class="bi bi-star rating"></i>
+          <i class="bi bi-star rating"></i>
+          <i class="bi bi-star rating"></i>
+        </div>
+        <div class="print-score mt-5 m-auto">
+          <span style="font-family: 'Noto Sans KR', sans-serif;font-size:40px;">4.6점</span>
+        </div>
+      </div>
+      <div class="progress-board col-sm-6">
+        <div class="bar-rating mt-5">
+          <div class="d-flex">
+            <div class="mr-4">
+              <div class="progress rounded-pill">
+                <div class="progress-bar" style="height: 20%;"></div>
+              </div>
+              <span style="font-family: 'Noto Sans KR', sans-serif;">5점</span>
+            </div>
+            <div class="mr-4">
+              <div class="progress rounded-pill">
+                <div class="progress-bar" style="height: 30%;"></div>
+              </div>
+              <span style="font-family: 'Noto Sans KR', sans-serif;">4점</span>
+            </div>
+            <div class="mr-4">
+              <div class="progress rounded-pill">
+                <div class="progress-bar" style="height: 80%;"></div>
+              </div>
+              <span style="font-family: 'Noto Sans KR', sans-serif;">3점</span>
+            </div>
+            <div class="mr-4">
+              <div class="progress rounded-pill">
+                <div class="progress-bar" style="height: 40%;"></div>
+              </div>
+              <span style="font-family: 'Noto Sans KR', sans-serif;">2점</span>
+            </div>
+            <div class="mr-4">
+              <div class="progress rounded-pill">
+                <div class="progress-bar" style="height: 23%;"></div>
+              </div>
+              <span style="font-family: 'Noto Sans KR', sans-serif;">1점</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="effect-board">
+      
+    </div>
+  </div>
+</body>
+</html>

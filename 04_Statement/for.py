@@ -118,65 +118,72 @@ for i in range(3):
     for k in range(3):
         repeat+=1
         print('HELLO',repeat)
+'''
+1 0 0 0 
+0 1 0 0 
+0 0 1 0
+0 0 0 1 처럼 출력해 보자
+0 0 0 0
+'''
+for i in range(5):#행을 구성
+    for k in range(4):#각 열을 구성
+        # 행과 열이 같을때 1출력 아니면 0출력
+        if i==k :
+            print(1,' ',end='')
+        else:
+            print(0, ' ', end='')
+    print()#줄바꿈
 
-
+'''
+ 0 0 0 1  (0,3) 
+ 0 0 1 0  (1,2)
+ 0 1 0 0  (2,1)
+ 1 0 0 0  (3,0)처럼 출력해 보자
+'''
+print('-' * 50)
+#방법1]
+for i in range(4):
+    for k in range(4):
+        # 행과 열의 합이 3일때 1출력 아니면 0출력
+        if i+k == 3:
+            print(1, ' ', end='')
+        else:
+            print(0, ' ', end='')
+    print()
+print('-' * 50)
+#방법2
+for i in range(1,5):
+    for k in range(4,0,-1):
+        if i==k:
+            print(1, ' ', end='')
+        else:
+            print(0, ' ', end='')
+    print()
+'''
+*
+* *
+* * *
+* * * *
+* * * * *  를 출력하여라 (이중 for문 이용)         
+'''
 print('-' * 50)
 for i in range(5):
     for k in range(5):
         if i >= k :
-            print('%-2c' % '*', ' ', end='')
+            print('%-2c' % '*',end='')
     print()
-
-
+print('-' * 50)
+'''
+문]아래 형식대로 구구단을 출력
+2 * 1 = 2   3 * 1 = 3   4 * 1 = 4........9 * 1 = 9
+2 * 2 = 4   3 * 2 = 6   4 * 2 = 8........9 * 2 = 18
+..
+..
+2 * 9 = 18  3 * 9 = 27  4 * 9 = 36....... 9 * 9 = 81    
+'''
 for i in range(1,10):
-    for j in range(2,10):
-        print('%d * %d = %-2d ' % (j,i,i*j), ' ', end='')
+    for k in range(2,10):
+        print('%-2d * %-2d = %-4d' % (k,i,k*i),end='')
     print()
 
 
-# 1부터 10까지 누적합 : whilte문 사용
-sum = 0
-i = 1# 쵝식
-while i <= 10: #반복조건
-    sum +=i # 실행문
-    i +=1 # 증감식
-print('1부터 10까지 누적합 : ',sum)
-
-
-sum = 0
-i = 1
-while i<= 1000:
-    if (i % 3 == 0) ^ (i % 5 == 0):
-        sum += i
-    i +=1
-
-print('1부터 1000까지 3과 5의 배수의 누적합(공배수 제외) : ',sum,sep='')
-
-#반복할 횟수가 정해지지 않은 경우 while문 사용
-import random
-i = 1
-while i != 5:
-    i = random.randint(1,10) # 1부터 10까지 난수 발생
-    print('i는 ',i)
-
-i=1#바깥 While의 초기식
-k=1
-while i < 5: #바깥 while문(행)
-    while k < 5: #안쪽while의 초기식
-        if i==k:
-            print('%-2d' % 1, end='')
-        else:
-            print('%-2d' % 0 ,end='')
-        k +=1#안쪽 while의 증가식
-    i+=1#바깥 while의 증감식
-    k=1
-
-import re
-print(re.__file__)
-print('[1. 패턴 객체 사용 - 패턴객체.함수()') #패턴객체 재사용 가능
-email = input('이메일을 입력하세요?')
-#re.compile('정규표현식") 로 Pattern객체 생성
-#re.compile('[a-zA-Z]+@\\w')
-
-
-log="[17.07.11 23:29:11] [INFO ]  [eclipse.galileo-bean-thread-50618297 galileo.site.SiteBean:317 ] - ##galileo_bean end. MessageExchange_ID:id:localhost-15a6308ba1c-6:86071562";
