@@ -1,9 +1,16 @@
 {
   "nodes": [
-    {"id": "Myriel", "group": 1},
-    {"id": "Napoleon", "group": 1},
-    {"id": "좋아요", "group": 8}
+    {"id": "가성비", "group": 8},
+    {"id": "힘", "group": 8},
+    {"id": "좋아요", "group": 8},
+    {"id": "간편", "group": 8},
+    {"id": "고려 비타민 정 1000C", "group": 8},
   ],
   "links": [
+    {"source": "좋아요", "target": "고려 비타민 정 1000C", "value": 1},
+    {"source": "좋아요", "target": "고려 비타민 정 1000C", "value": 2},
+    {"source": "좋아요", "target": "고려 비타민 정 1000C", "value": 3},
+    {"source": "좋아요", "target": "고려 비타민 정 1000C", "value": 4},
+    {"source": "좋아요", "target": "고려 비타민 정 1000C", "value": 5},
   ]
 }
