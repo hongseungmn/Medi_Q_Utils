@@ -82,12 +82,33 @@
     
   </body>
   <script>
+    const data = {
+  "nodes": [
+    {"id": "가성비", "group": 8},
+    {"id": "힘", "group": 8},
+    {"id": "좋아요", "group": 8},
+    {"id": "간편", "group": 8},
+    {"id": "고려 비타민 정 1000C", "group": 8},
+    {"id": "속쓰림", "group": 1},
+    {"id": "별로", "group": 1},
+    {"id": "복통", "group": 1},
+  ],
+  "links": [
+    {"source": "좋아요", "target": "고려 비타민 정 1000C", "value": 1},
+    {"source": "간편", "target": "고려 비타민 정 1000C", "value": 1},
+    {"source": "힘", "target": "고려 비타민 정 1000C", "value": 1},
+    {"source": "가성비", "target": "고려 비타민 정 1000C", "value": 1},
+    {"source": "속쓰림", "target": "고려 비타민 정 1000C", "value": 1},
+    {"source": "별로", "target": "고려 비타민 정 1000C", "value": 1},
+    {"source": "복통", "target": "고려 비타민 정 1000C", "value": 100},
     
+  ]
+}
     const elem = document.getElementById('3d-graph');
 
     const Graph = ForceGraph3D()
       (elem)
-        .jsonUrl('https://raw.githubusercontent.com/hongseungmn/pythonTest/master/project/dataset.json')
+        .graphData(data)
         .nodeLabel('id')
         .nodeAutoColorBy('group')
         .onNodeHover(node => elem.style.cursor = node ? 'pointer' : null)
