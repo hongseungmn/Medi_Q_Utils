@@ -12,6 +12,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/marshallku/infinite-scroll/dist/infiniteScroll.min.js"></script>
   <style>
     .effect-custom-font {
       font-family : Noto Sans KR, sans-serif;
@@ -42,21 +45,16 @@
       color: #ff4b4b;
       border-radius: 15px;
     }
-    .food-card {
+    .food-li {
       background-color: white;
       color: black;
       border-radius: 15px;
     }
-    .food-card:hover {
-      background-color:#ff4b4b;
-      color: white;
-      border-radius: 15px;
+    .food-li:hover {
+      border: #ff4b4b solid 2px;
     }
-    .food-card-checked {
-      background-color:#FFDDD0;
-      border: 3px solid #ff4b4b;
-      color: #ff4b4b;
-      border-radius: 15px;
+    .food-li-checked {
+      border: #ff4b4b solid 2px;
     }
 </style>
 </head>
@@ -67,6 +65,7 @@
 		</div>
 		<div class="m-5" style="height:3px;background-color:#ccc"></div>
     <!--Q1#-->
+    <form id="sendReportData" action="http://localhost:9090/analyzeMyReport.do" method="post" onsubmit="preventSubmit(event)">
     <div class="m-5" style="font-size:30px;"><span st>Q1#</span> 영양제 관련 취향을 선택해주세요.</div>
 		<div class="m-5 d-flex justify-content-around">
 			<div class="jumbotron" style="border-radius:15px;width:30%;height:200px;">
@@ -100,9 +99,23 @@
     <!--Q2#-->
     <div class="question-2 m-5">
       <div style="font-size:30px;"><span st>Q2#</span> 현재 먹고 있는 영양제를 등록해보세요!<button class="btn btn-warning m-5" style="border-radius:15px;" id="search-myFood">영양제 검색하러 가기-></button></div>
-      <div class="jumbotron" style="height:500px;"></div>
+      <div class="jumbotron food-selected-list" style="height:500px;">
+        <ul class="list-unstyled d-flex justify-content-around">
+
+        </ul>
+      </div>
     </div>
+    <!-- 분석하기 -->
+    <div class="m-5">
+      <button class="btn btn-danger" style="border-radius:15px; width:100%" id="analyze-myFood">분석하기</button>
+    </div>
+    <input type="hidden" name="takePurpose" id="takePurPose" value=""/>
+    <input type="hidden" name="takeFood" id="takeFood" value=""/>
+    </form>
 	</div>
+
+  
+  
   
   <!-- modal 등록하기-->
   <div class="modal fade" id="take-purpose-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -200,32 +213,37 @@
 	</div>
   <!-- 내가 먹고 있는 영양제 검색 -->
   <div class="modal fade" id="take-foodList-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content effect-custom-font">
         <div class="modal-header">
-          <h5 class="modal-title">영양제를 먹는 이유가 무엇인가요?</h5>
+          <h5 class="modal-title">섭취중인 영양제를 등록해주세요</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body d-flex">
-          <div class="food-card">
-            <div class="card-body" style="width: 8rem;height:8rem;">
-              <img src="./images/No_IMG.jpeg" class="card-img" style="border-radius: 15px;">
-            </div>
-            <p class="card-title">제품명</p>
-          </div>
-          <div class="food-card mx-2 my-2" style="width: 8rem">
-            <img src="./images/No_IMG.jpeg" class="m-auto card-img" style="width:100px;height:100px;border-radius: 15px;">
-            <div class="card-body">
-                <p class="card-title">제품명</p>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-          <button type="button" class="btn btn-primary" id="save-take-food">저장하기</button>
-        </div>
+        <div class="modal-body ">
+          <ul class="list-unstyled d-flex justify-content-around">
+            <li class="food-li" style="text-align: center;">
+              <img src="./images/No_IMG.jpeg" style="width:150px;height:150px;border-radius: 15px;">
+              <div style="font-size: 15px;color: #939393;width:150px;">루테인오메가플러스D&E</div>
+            </li>
+            <li class="food-li" style="text-align: center;">
+              <img src="./images/No_IMG.jpeg" style="width:150px;height:150px;border-radius: 15px;">
+              <div style="font-size: 15px;color: #939393;width:150px;">노바락토 알파 포스트바이오틱스</div>
+            </li>
+            <li class="food-li" style="text-align: center;">
+              <img src="./images/No_IMG.jpeg" style="width:150px;height:150px;border-radius: 15px;">
+              <div style="font-size: 15px;color: #939393;width:150px;">포텐티</div>
+            </li>
+            <li class="food-li" style="text-align: center;">
+              <img src="./images/No_IMG.jpeg" style="width:150px;height:150px;border-radius: 15px;">
+              <div style="font-size: 15px;color: #939393;width:150px;">이뮨젤리</div>
+            </li>
+          </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" id="save-take-food">저장하기</button>
       </div>
     </div>
   </div>
@@ -239,9 +257,9 @@
     $('#take-foodList-modal').modal("show");
   })
 
-  $(".food-card").click(function(){
-    if($(this).hasClass("food-card")) {
-      $(this).toggleClass("food-card-checked");
+  $(".food-li").click(function(){
+    if($(this).hasClass("food-li")) {
+      $(this).toggleClass("food-li-checked");
     }
   });
 
@@ -250,10 +268,10 @@
       $(this).toggleClass("card-checked");
     }
   });
-
+  let takePurPoses= Array();
   $('#save-take-purpose').click(function() {
     var takePurPose = document.querySelectorAll('.card-checked');
-    var takePurPoses = Array();
+    takePurPoses = [];
     for(var i=0; i<takePurPose.length;i++) {
       console.log(takePurPose[i].querySelector(".card-title").innerHTML);
       takePurPoses.push(takePurPose[i].querySelector(".card-title").innerHTML);
@@ -262,6 +280,52 @@
     $('#take-purpose-modal').modal('hide');
   });
 
+  const takeFoods = Array();
+  $('#save-take-food').click(function() {
+    var takeFood = document.querySelectorAll('#take-foodList-modal .food-li-checked');
+    var foodContainer = $('.food-selected-list ul');
+    $('.food-selected-list ul li').remove('li');
+    $('#take-foodList-modal .food-li-checked').clone(true).appendTo(foodContainer);
+    for(var i=0; i<takeFood.length;i++) {
+      console.log(takeFood[i].querySelector("div").innerHTML);
+      takeFoods.push(takeFood[i].querySelector("div").innerHTML);
+    }
+    $('#take-foodList-modal').modal('hide');
+  });
+
+  function preventSubmit(event) {
+    event.preventDefault(); // 전송을 막는 메소드
+  }
+  $('#analyze-myFood').click(function() {
+    document.querySelector("#takePurPose").value=takePurPoses;
+    document.querySelector("#takeFood").value=takeFoods;
+    let timerInterval
+    Swal.fire({
+      title: '분석중입니다!',
+      html: 'I will close in <b></b> milliseconds.',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+        console.log(document.querySelector("#takeFood").value);
+        console.log(document.querySelector("#takePurPose").value);
+        document.querySelector("#sendReportData").submit();
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer');
+      }
+    })
+  });
+  
 </script>
 </body>
 </html>
