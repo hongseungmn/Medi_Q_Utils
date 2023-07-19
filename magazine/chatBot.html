@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+</head>
+<style>    
+  *{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 20px;
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded",function() {
+    document.querySelector("#userInput").addEventListener("keydown",function(event) {
+      if(event.keyCode === 13) {
+        sendData(event.target.value);
+        document.querySelector("#userInput").value ="";
+      }
+      //else if(e.code === )
+    });  
+  });
+  function sendData(text) {
+    var cloneUserDialog = document.querySelector(".userDialog").cloneNode(true);
+    cloneUserDialog.querySelector(".usersQuestion").innerHTML = text;
+    cloneUserDialog.style.display='';
+    document.querySelector(".textdialog").appendChild(cloneUserDialog);
+    receiveData("이 질문에 대한 답을 드리겠습니다");
+  }
+
+  function receiveData(text) {
+    var cloneGptDialog = document.querySelector(".gptDialog").cloneNode(true);
+    cloneGptDialog.querySelector(".gptAnswer").innerHTML = text;
+    cloneGptDialog.style.display='';
+    document.querySelector(".textdialog").appendChild(cloneGptDialog);
+    document.querySelector(".textdialog").scrollTop = document.querySelector(".textdialog").scrollHeight; 
+  }
+</script>
+<body>
+  <div class="container">
+    <div class="jumbotron" style="font-size:50px;text-align:center">Chat-Bot</div>
+    <div class="textdialog" style="border: 1px solid #cccccc;width:100%;height:500px;overflow:scroll;">
+      <div class="userDialog"style="display:none;">
+        <div class="skeleton-user d-flex row p-0 m-0" style="background-color:#f6f4f4;height:100px;">
+          <div class="col-2 d-flex" style="align-items : center;">
+            <img src="./images/USER.png" style="width:30px;height:30px;"/>
+          </div>
+          <div class="usersQuestion col-10 d-flex" style="width:100%;align-items:center;"></div>
+        </div>
+      </div>
+      <div class="gptDialog"style="display:none;">
+        <div class="skeleton-gpt d-flex row p-0 m-0" style="background-color:white;height:100px;">
+          <div class="col-2 d-flex" style="align-items : center;">
+            <img src="./images/CHATGPT.JPG" style="width:30px;height:30px;"/>
+          </div>
+          <div class="gptAnswer col-10 d-flex" style="width:100%;align-items:center;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="inputDIV p-2 mt-5">
+      <input type="text" class="form-control" id="userInput" style="width:100%;border-radius:15px;background-color:#ffffff;" placeholder="Send a message">
+    </div>
+  </div>
+</body>
+</html>

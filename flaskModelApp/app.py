@@ -3,14 +3,21 @@ from flask_restx import Api, Resource  # Api 구현을 위한 Api 객체 import
 import tensorflow as tf
 import sklearn
 import numpy as np
+import pandas as pd
 import joblib
+import cx_Oracle
+import os
+import re
 
 app = Flask(__name__)  # Flask 객체 선언, 파라미터로 어플리케이션 패키지의 이름을 넣어줌.
 
 
+
 @app.route("/")  # 홈 화면
 def hello():
+    
     return render_template('home.html')
+    
 
 
 @app.route("/model", methods=['POST'])  # POST 요청 받기
@@ -29,6 +36,29 @@ def model():
         # result = {"test" : "test1234"}
     return jsonify(result.tolist(), model.predict_proba(arr).tolist()), 200  # 결괏값 리턴
 
+@app.route("/reviewModel", methods=['POST'])
+def reviewModel():
+    if request.method == 'POST':
+        print('테스트')
+        model = joblib.load('C:/HSM/Workspace/pythonTest/flaskModelApp/best_model.h5')
+        connect = cx_Oracle.connect("JSP", "JSP", "localhost:1521/xe")
+        df=pd.read_sql_query(""" SELECT * FROM BBS """ , con = connect)
+        connect.close()
+        print(df)
+        return '테스트'
+
+def sentiment_predict(new_sentence):
+    new_sentence = re.sub(r'[^ㄱ-ㅎㅏ-ㅣ가-힣 ]','', new_sentence)
+    new_sentence = mecab.morphs(new_sentence)
+    new_sentence = [word for word in new_sentence if not word in stopwords]
+    encoded = tokenizer.texts_to_sequences([new_sentence])
+    pad_new = pad_sequences(encoded, maxlen = max_len)
+
+    score = float(loaded_model.predict(pad_new))
+    if(score > 0.5):
+        print("{:.2f}% 확률로 긍정 리뷰입니다.".format(score * 100))
+    else:
+        print("{:.2f}% 확률로 부정 리뷰입니다.".format((1 - score) * 100))
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=80)

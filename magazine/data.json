@@ -1,0 +1,25 @@
+{
+  "nodes": [
+    {"id": "가성비", "group": 3},
+    {"id": "힘", "group": 3},
+    {"id": "좋아요", "group": 3},
+    {"id": "간편", "group": 3},
+    {"id": "고려 비타민 정 1000C", "group": 2},
+    {"id": "별로", "group": 1},
+    {"id": "부작용이 없어요", "group": 1},
+    {"id": "복통", "group": 1},
+    {"id": "설사", "group": 1},
+    {"id": "설사", "group": 1}
+
+  ],
+  "links": [
+    {"source": "힘", "target": "고려 비타민 정 1000C", "value": 5},
+    {"source": "가성비", "target": "고려 비타민 정 1000C", "value": 1},
+    {"source": "간편", "target": "고려 비타민 정 1000C", "value": 1},
+    {"source": "좋아요", "target": "고려 비타민 정 1000C", "value": 5},
+    {"source": "별로", "target": "고려 비타민 정 1000C", "value": 1},
+    {"source": "부작용이 없어요", "target": "고려 비타민 정 1000C", "value": 1},
+    {"source": "복통", "target": "고려 비타민 정 1000C", "value": 1},
+    {"source": "설사", "target": "고려 비타민 정 1000C", "value": 1}
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "nodes": [
+    {
+      "id": "가성비",
+      "group": 3,
+      "val": 1
+    },
+    {
+      "id": "힘",
+      "group": 3,
+      "val": 6
+    },
+    {
+      "id": "좋아요",
+      "group": 3,
+      "val": 1
+    },
+    {
+      "id": "간편",
+      "group": 3,
+      "val": 1
+    },
+    {
+      "id": "고려 비타민 정 1000C",
+      "group": 2
+    },
+    {
+      "id": "별로",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "부작용이 없어요",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "복통",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "설사",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "알레르기",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "발생",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "딱히",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "개선",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "되",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "느낌",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "받",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "못했",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "어요",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "알레르기가 발생하고 딱히 개선되는 느낌은 받지 못했어요..",
+      "group": 1,
+      "val": 1
+    }
+  ],
+  "links": [
+    {
+      "source": "힘",
+      "target": "고려 비타민 정 1000C",
+      "value": 5
+    },
+    {
+      "source": "가성비",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "간편",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "좋아요",
+      "target": "고려 비타민 정 1000C",
+      "value": 5
+    },
+    {
+      "source": "별로",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "부작용이 없어요",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "복통",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "설사",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "알레르기",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "발생",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "딱히",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "개선",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "되",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "느낌",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "받",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "못했",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "어요",
+      "target": "고려 비타민 정 1000C",
+      "value": 1
+    },
+    {
+      "source": "알레르기가 발생하고 딱히 개선되는 느낌은 받지 못했어요..",
+      "target": "알레르기",
+      "value": 1
+    }
+  ]
+}

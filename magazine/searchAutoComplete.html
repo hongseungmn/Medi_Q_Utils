@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <div class="search-bar ml-3" style="width:100%;">
+    <h5 class="modal-title p-3">💡 섭취중인 영양제를 등록해주세요</h5>
+  <input id=searchText class="form-control" type="text" placeholder="브랜드명 혹은 제품명을 입력해주세요" style="border-radius:15px;background-color:#f6f6f6;width:100%">
+  </div>
+</body>
+<script>
+  var availableTags = [
+  "ActionScript",
+  "AppleScript",
+  "Asp",
+  "BASIC",
+  "C",
+  "C++",
+  "Clojure",
+  "COBOL",
+  "ColdFusion",
+  "Erlang",
+  "Fortran",
+  "Groovy",
+  "Haskell",
+  "Java",
+  "JavaScript",
+  "Lisp",
+  "Perl",
+  "PHP",
+  "Python",
+  "Ruby",
+  "Scala",
+  "Scheme"
+];
+$( "#searchText" ).autocomplete({
+  source: availableTags,
+
+});
+</script>
+</html>
