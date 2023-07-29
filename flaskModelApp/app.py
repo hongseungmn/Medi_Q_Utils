@@ -5,12 +5,11 @@ import sklearn
 import numpy as np
 import pandas as pd
 import joblib
-import cx_Oracle
 import os
 import re
-
+from flask_cors import CORS
 app = Flask(__name__)  # Flask 객체 선언, 파라미터로 어플리케이션 패키지의 이름을 넣어줌.
-
+CORS(app)
 
 
 @app.route("/")  # 홈 화면
@@ -18,6 +17,17 @@ def hello():
     
     return render_template('home.html')
     
+
+@app.route("/files", methods=["POST"])
+def files():
+    try:
+        file = request.files["imageFile"]  # 클라이언트로부터 전송된 파일 받기
+        # 파일 처리 로직 작성
+        # 예를 들어, 파일 저장을 원한다면:
+        file.save("uploaded_file.png")
+        return jsonify({"message": "파일 업로드 성공"})
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
 
 @app.route("/model", methods=['POST'])  # POST 요청 받기
