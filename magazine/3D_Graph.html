@@ -93,7 +93,7 @@
       border-radius: 3px;
       transition: all 200ms ease-in-out;
       position: relative;
-      background-color: #cfebff;
+      background-color: #335504;
     }
 
 </style>
@@ -102,7 +102,7 @@
   <div class="tab-pane" id="review"><!-- 탭 2 시작 -->
     <div class="jumbotron mt-5 row" style="background-color:#f5f5f5">
     <div class="col-7" style="background-color:rgb(255, 255, 255);border-radius:15px;">
-      <div id="3d-graph" style="width:300px;height:300px;"></div>
+      <div id="3d-graph" style="width:1000px;height:1000px;"></div>
     </div>
     </div>
     </div>
@@ -110,30 +110,53 @@
       const Graph = ForceGraph3D()
         (document.getElementById('3d-graph'))
           .jsonUrl('./data copy.json')
-          .nodeAutoColorBy('group')
-          .width("400")
-          .height("400")
-          .linkWidth(2)
+          .width("1000")
+          .height("1000")
+          .linkWidth(0.2)
+          .linkAutoColorBy("value")
           .backgroundColor("white")
           .nodeThreeObject(node => {
             const sprite = new SpriteText(node.id);
             sprite.material.depthWrite = false; // make sprite background transparent
-            sprite.color = node.color;
-            sprite.textHeight = 20;
-            if(sprite.text === '고려 비타민 정 1000C') {
-                sprite.color = "#ee4949";
-                sprite.textHeight = 30;
+            if(node.group==3) {
+              sprite.color = "#2803ff";
+              if(node.val <=5) {
+                sprite.textHeight = node.val;
+              }
+              else if(node.val <= 10 && node.val > 5) {
+                sprite.textHeight = node.val/3;
+              }
+              else if(node.val > 15) {
+                sprite.textHeight = node.val/5;
+              }
+              
+            }
+            else if(node.group==1) {
+              sprite.color = "#ff3d3d";
+              if(node.val <=5) {
+                sprite.textHeight = node.val+5;
+              }
+              else if(node.val <= 10 && node.val > 5) {
+                sprite.textHeight = node.val/2;
+              }
+              else if(node.val > 15) {
+                sprite.textHeight = node.val/3;
+              }
             }
             else {
-              sprite.textHeight = node.val+30
+              sprite.color = "#335504";
+              sprite.textHeight = 10;
             }
+            
+            
+            
             
             
             return sprite;
           });
   
       // Spread nodes a little wider
-      Graph.d3Force('charge').strength(-1500);
+      Graph.d3Force('charge').strength(-50);
   
     </script>
   </body>

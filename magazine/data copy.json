@@ -1,189 +1,310 @@
 {
   "nodes": [
     {
-      "id": "가성비",
-      "group": 3,
+      "id": "리뷰",
+      "group": 1,
       "val": 1
     },
     {
-      "id": "힘",
+      "id": "필요",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "할까요",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "리뷰가 필요할까요",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "고려은단 비타민C1000 이지+비타민D",
+      "group": 2,
+      "val": 53
+    },
+    {
+      "id": "없",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "어도",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "될",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "거",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "같",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "기",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "없어도 될거 같기도 하고",
+      "group": 1,
+      "val": 1
+    },
+    {
+      "id": "정말",
       "group": 3,
       "val": 6
     },
     {
-      "id": "좋아요",
+      "id": "좋",
+      "group": 3,
+      "val": 41
+    },
+    {
+      "id": "정말 좋아요",
       "group": 3,
       "val": 1
     },
     {
-      "id": "간편",
+      "id": "효과",
       "group": 3,
-      "val": 1
+      "val": 45
     },
     {
-      "id": "고려 비타민 정 1000C",
-      "group": 2
+      "id": "효과가 정말 좋아요",
+      "group": 3,
+      "val": 5
     },
     {
-      "id": "별로",
+      "id": "입병",
       "group": 1,
-      "val": 1
+      "val": 5
     },
     {
-      "id": "부작용이 없어요",
+      "id": "나아졌",
       "group": 1,
-      "val": 1
+      "val": 5
     },
     {
-      "id": "복통",
+      "id": "습니다",
       "group": 1,
-      "val": 1
+      "val": 13
     },
     {
-      "id": "설사",
+      "id": "입병이 나아졌습니다",
       "group": 1,
-      "val": 1
+      "val": 5
     },
     {
-      "id": "알레르기",
+      "id": "아직",
       "group": 1,
-      "val": 1
+      "val": 5
     },
     {
-      "id": "발생",
+      "id": "안",
       "group": 1,
-      "val": 1
+      "val": 5
     },
     {
-      "id": "딱히",
+      "id": "나타나",
       "group": 1,
-      "val": 1
+      "val": 5
     },
     {
-      "id": "개선",
+      "id": "요",
       "group": 1,
-      "val": 1
+      "val": 5
     },
     {
-      "id": "되",
+      "id": "효과가 아직은 안나타나요",
       "group": 1,
-      "val": 1
+      "val": 5
     },
     {
-      "id": "느낌",
-      "group": 1,
-      "val": 1
+      "id": "효과가 좋습니다",
+      "group": 3,
+      "val": 8
     },
     {
-      "id": "받",
-      "group": 1,
-      "val": 1
+      "id": "으",
+      "group": 3,
+      "val": 22
     },
     {
-      "id": "못했",
-      "group": 1,
-      "val": 1
+      "id": "느니라",
+      "group": 3,
+      "val": 22
     },
     {
-      "id": "어요",
-      "group": 1,
-      "val": 1
+      "id": "효과가 좋으느니라",
+      "group": 3,
+      "val": 22
     },
     {
-      "id": "알레르기가 발생하고 딱히 개선되는 느낌은 받지 못했어요..",
-      "group": 1,
-      "val": 1
+      "id": "효과가 좋아요",
+      "group": 3,
+      "val": 5
     }
   ],
   "links": [
     {
-      "source": "힘",
-      "target": "고려 비타민 정 1000C",
-      "value": 5
-    },
-    {
-      "source": "가성비",
-      "target": "고려 비타민 정 1000C",
+      "source": "리뷰",
+      "target": "고려은단 비타민C1000 이지+비타민D",
       "value": 1
     },
     {
-      "source": "간편",
-      "target": "고려 비타민 정 1000C",
+      "source": "필요",
+      "target": "고려은단 비타민C1000 이지+비타민D",
       "value": 1
     },
     {
-      "source": "좋아요",
-      "target": "고려 비타민 정 1000C",
-      "value": 5
-    },
-    {
-      "source": "별로",
-      "target": "고려 비타민 정 1000C",
+      "source": "할까요",
+      "target": "고려은단 비타민C1000 이지+비타민D",
       "value": 1
     },
     {
-      "source": "부작용이 없어요",
-      "target": "고려 비타민 정 1000C",
+      "source": "리뷰가 필요할까요",
+      "target": "리뷰",
       "value": 1
     },
     {
-      "source": "복통",
-      "target": "고려 비타민 정 1000C",
+      "source": "없",
+      "target": "고려은단 비타민C1000 이지+비타민D",
       "value": 1
     },
     {
-      "source": "설사",
-      "target": "고려 비타민 정 1000C",
+      "source": "어도",
+      "target": "고려은단 비타민C1000 이지+비타민D",
       "value": 1
     },
     {
-      "source": "알레르기",
-      "target": "고려 비타민 정 1000C",
+      "source": "될",
+      "target": "고려은단 비타민C1000 이지+비타민D",
       "value": 1
     },
     {
-      "source": "발생",
-      "target": "고려 비타민 정 1000C",
+      "source": "거",
+      "target": "고려은단 비타민C1000 이지+비타민D",
       "value": 1
     },
     {
-      "source": "딱히",
-      "target": "고려 비타민 정 1000C",
+      "source": "같",
+      "target": "고려은단 비타민C1000 이지+비타민D",
       "value": 1
     },
     {
-      "source": "개선",
-      "target": "고려 비타민 정 1000C",
+      "source": "기",
+      "target": "고려은단 비타민C1000 이지+비타민D",
       "value": 1
     },
     {
-      "source": "되",
-      "target": "고려 비타민 정 1000C",
+      "source": "없어도 될거 같기도 하고",
+      "target": "없",
       "value": 1
     },
     {
-      "source": "느낌",
-      "target": "고려 비타민 정 1000C",
+      "source": "정말",
+      "target": "고려은단 비타민C1000 이지+비타민D",
       "value": 1
     },
     {
-      "source": "받",
-      "target": "고려 비타민 정 1000C",
+      "source": "좋",
+      "target": "고려은단 비타민C1000 이지+비타민D",
       "value": 1
     },
     {
-      "source": "못했",
-      "target": "고려 비타민 정 1000C",
+      "source": "정말 좋아요",
+      "target": "정말",
       "value": 1
     },
     {
-      "source": "어요",
-      "target": "고려 비타민 정 1000C",
+      "source": "효과",
+      "target": "고려은단 비타민C1000 이지+비타민D",
       "value": 1
     },
     {
-      "source": "알레르기가 발생하고 딱히 개선되는 느낌은 받지 못했어요..",
-      "target": "알레르기",
+      "source": "효과가 정말 좋아요",
+      "target": "효과",
+      "value": 1
+    },
+    {
+      "source": "입병",
+      "target": "고려은단 비타민C1000 이지+비타민D",
+      "value": 1
+    },
+    {
+      "source": "나아졌",
+      "target": "고려은단 비타민C1000 이지+비타민D",
+      "value": 1
+    },
+    {
+      "source": "습니다",
+      "target": "고려은단 비타민C1000 이지+비타민D",
+      "value": 1
+    },
+    {
+      "source": "입병이 나아졌습니다",
+      "target": "입병",
+      "value": 1
+    },
+    {
+      "source": "아직",
+      "target": "고려은단 비타민C1000 이지+비타민D",
+      "value": 1
+    },
+    {
+      "source": "안",
+      "target": "고려은단 비타민C1000 이지+비타민D",
+      "value": 1
+    },
+    {
+      "source": "나타나",
+      "target": "고려은단 비타민C1000 이지+비타민D",
+      "value": 1
+    },
+    {
+      "source": "요",
+      "target": "고려은단 비타민C1000 이지+비타민D",
+      "value": 1
+    },
+    {
+      "source": "효과가 아직은 안나타나요",
+      "target": "효과",
+      "value": 1
+    },
+    {
+      "source": "효과가 좋습니다",
+      "target": "효과",
+      "value": 1
+    },
+    {
+      "source": "으",
+      "target": "고려은단 비타민C1000 이지+비타민D",
+      "value": 1
+    },
+    {
+      "source": "느니라",
+      "target": "고려은단 비타민C1000 이지+비타민D",
+      "value": 1
+    },
+    {
+      "source": "효과가 좋으느니라",
+      "target": "효과",
+      "value": 1
+    },
+    {
+      "source": "효과가 좋아요",
+      "target": "효과",
       "value": 1
     }
   ]
