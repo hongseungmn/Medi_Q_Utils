@@ -5,12 +5,18 @@ import sklearn
 import numpy as np
 import pandas as pd
 import joblib
-import cx_Oracle
 import os
 import re
+from flask_cors import CORS
+import matplotlib.pyplot as plt
+from skimage import feature
+import cv2
+import base64
+
+
 
 app = Flask(__name__)  # Flask 객체 선언, 파라미터로 어플리케이션 패키지의 이름을 넣어줌.
-
+CORS(app)
 
 
 @app.route("/")  # 홈 화면
@@ -19,11 +25,69 @@ def hello():
     return render_template('home.html')
     
 
+@app.route("/Imagefiles", methods=["POST"])
+def files():
+    print("1-------------------------------------------------")
+    #file = request.files["files"]  # 클라이언트로부터 전송된 파일 받기
+    data = request.form["base64String"]
+        # 파일 처리 로직 작성
+        # 예를 들어, 파일 저장을 원한다면:
+    #print(data)
+    model = joblib.load(
+        '/Users/hongseongmin/Documents/GitHub/notice-board/pythonTest/flaskModelApp/parkinsons_spiral_model_Rf.pkl')
+    test_prediction(model,data)
+    print("-------------------------------------------------")
+    return jsonify({"message": "파일 업로드 성공"})
+
+
+def quantify_image(image):
+    features = feature.hog(image, orientations=9,
+                           pixels_per_cell=(10, 10), cells_per_block=(2, 2),
+                           transform_sqrt=True, block_norm="L1")
+    return features
+
+def test_prediction(model, base64_image_data):
+    # get the list of images
+    
+    # base64 디코드하여 이미지 데이터로 변환
+    image_data = base64.b64decode(base64_image_data)
+    nparr = np.frombuffer(image_data, np.uint8)
+    output_images = []
+    # pick 15 images at random
+    # NumPy 배열을 이미지로 읽어들이기
+    image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    output = image.copy()
+    cv2.imwrite("file_image.png", image)
+    output = cv2.resize(output, (128, 128))
+    # pre-process the image
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    image = cv2.resize(image, (200, 200))
+    image = cv2.threshold(image, 0, 255,
+                            cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
+    # quantify the image and make predictions based on the extracted features
+    features = quantify_image(image)
+    preds = model.predict([features])
+    print(preds)
+    predict_proba = model.predict_proba([features])
+    print(predict_proba)
+    label = "Parkinsons" if preds[0] else "Healthy"
+
+    # draw the colored class label on the output image and add it to
+    # the set of output images
+    color = (0, 255, 0) if label == "Healthy" else (0, 0, 255)
+    cv2.putText(output, label, (3, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
+                color, 2)
+    output_images.append(output)
+    cv2.imwrite("file_name.png", output)
+    print("ok")
+
 
 @app.route("/model", methods=['POST'])  # POST 요청 받기
 def model():
     if request.method == 'POST':
-        data = {"data": request.form["data"]}  # 데이터 받기
+        data = request.form.get('age')
+        print(data)
+        #data = {"data": request.form["data"]}  # 데이터 받기
 
         model = joblib.load(
             'C:/HSM/Workspace/pythonTest/flaskModelApp/saved_model_clf.pkl')  # 모델 불러오기 -> 현재 결정 트리 모델로 구성을 했다
