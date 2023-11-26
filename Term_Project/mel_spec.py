@@ -4,6 +4,10 @@ import matplotlib.pyplot as plt
 import cv2
 import librosa.display
 from micro_Stream import MicrophoneStream
+import threading
+import socket
+import pickle
+import struct
 
 # 오디오 파라미터
 RATE = 16000
@@ -12,6 +16,9 @@ CHUNK = int(RATE / 10)  # 100ms
 # 웹캠 인자
 WEBCAM_INDEX = 0  
 webcam_capture = cv2.VideoCapture(WEBCAM_INDEX)
+clientsocket=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+clientsocket.connect(('localhost',8089))
+
 
 def plot_audio_and_mel_spectrogram(audio_gen):
     full_frame = []
@@ -20,14 +27,15 @@ def plot_audio_and_mel_spectrogram(audio_gen):
     # 서브플롯 설정
     fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1, figsize=(10, 8))
     plt.subplots_adjust(hspace=0.5)
-
+    thread_1 = threading.Thread(target = streaming)
+    
     for i, x in enumerate(audio_gen):
-        x = np.fromstring(x, np.int16)
+        x = np.frombuffer(x, np.int16)
         full_frame.append(x)
         str_frame = b''.join(full_frame)
-        wav = np.fromstring(str_frame, np.int16)
+        wav = np.frombuffer(str_frame, np.int16)
 
-        # 첫 번째 그래프 (상단)
+        # 첫 번째 그래프 (상단 - 기본)
         ax1.cla()
         ax1.axis([0, CHUNK * 10, -8000, 8000])
         try:
@@ -43,7 +51,7 @@ def plot_audio_and_mel_spectrogram(audio_gen):
         try:
             mel_spectrogram = librosa.feature.melspectrogram(y=wav.astype(float), sr=RATE)
             display_data = librosa.power_to_db(mel_spectrogram, ref=np.max)
-            print('display_data : ',display_data)
+            # print('display_data : ',display_data)
             librosa.display.specshow(display_data, y_axis='mel', x_axis='time', ax=ax2)
         except Exception as e:
             print(f"Error during spectrogram calculation: {e}")
@@ -54,7 +62,7 @@ def plot_audio_and_mel_spectrogram(audio_gen):
         ax3.imshow(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
         ax3.axis('off')
         
-        # 두 번째 그래프 (하단)
+        # 네 번째 그래프 (이상치 탐지)
         ax4.cla()
         ax4.axis([0, CHUNK * 10, -8000, 8000])
         threshold = 5000
@@ -65,8 +73,20 @@ def plot_audio_and_mel_spectrogram(audio_gen):
         str_ = 'Number of Outliers : ' + str(len(exceed_indices))
         ax4.text(0.2, 0.8, str_, transform=ax4.transAxes)
         ax4.plot(exceed_indices, wav_plot[exceed_indices], 'rx')
-
+        if(len(exceed_indices) >= 1000) and not thread_1.is_alive():
+            thread_1.start()
         plt.pause(0.01)
+
+def streaming():
+    # 비디오 경로 읽어오기
+    while True:
+        ret,frame=webcam_capture.read()
+        # 프레임 직렬화하여 전송준비
+        data = pickle.dumps(frame)
+        # 메시지 길이 측정
+        message_size = struct.pack("L", len(data))
+        # 데이터 전송
+        clientsocket.sendall(message_size + data)
 
 def main():
     plt.ion()

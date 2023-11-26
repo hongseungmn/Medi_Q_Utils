@@ -37,8 +37,8 @@ def animate(i):
     
 def animate_2(i):
   global time_num
-  #y_2 = random.randint(0,512)
-  y_2 = df.loc[time_num]
+  y_2 = random.randint(0,512)
+  #y_2 = df.loc[time_num]
   old_y_2 = line_2.get_ydata()
   new_y_2 = np.r_[old_y_2[1:], y_2]
   line_2.set_ydata(new_y_2)
